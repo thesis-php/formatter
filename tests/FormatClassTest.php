@@ -13,15 +13,15 @@ use PHPUnit\Framework\TestCase;
 final class FormatClassTest extends TestCase
 {
     /**
-     * @return \Generator<int, array{object, non-empty-string}>
+     * @return \Generator<string, array{string|object, non-empty-string}>
      */
     public static function cases(): \Generator
     {
-        yield [new \stdClass(), \stdClass::class];
-        yield [\stdClass::class, \stdClass::class];
-        yield [new class {}, \sprintf('class@%s:%d', __FILE__, __LINE__)];
-        yield [new class extends \ArrayObject {}, \sprintf('ArrayObject@%s:%d', __FILE__, __LINE__)];
-        yield [
+        yield 'from object' => [new \stdClass(), \stdClass::class];
+        yield 'from class-string' => [\stdClass::class, \stdClass::class];
+        yield 'from anonymous object' => [new class {}, \sprintf('class@%s:%d', __FILE__, __LINE__)];
+        yield 'from extended class' => [new class extends \ArrayObject {}, \sprintf('ArrayObject@%s:%d', __FILE__, __LINE__)];
+        yield 'from implemented class' => [
             new class implements \IteratorAggregate {
                 public function getIterator(): \Traversable
                 {
@@ -30,8 +30,8 @@ final class FormatClassTest extends TestCase
             },
             \sprintf('IteratorAggregate@%s:%d', __FILE__, __LINE__ - 6),
         ];
-        yield [eval('return new \stdClass();'), \stdClass::class];
-        yield [eval('return new class {};'), \sprintf('class@%s:%d', __FILE__, __LINE__)];
+        yield 'from eval object' => [(object) eval('return new \stdClass();'), \stdClass::class];
+        yield 'from eval anonymous object' => [(object) eval('return new class {};'), \sprintf('class@%s:%d', __FILE__, __LINE__)];
     }
 
     /**
@@ -49,6 +49,7 @@ final class FormatClassTest extends TestCase
     /**
      * @param class-string|object $class
      * @param non-empty-string $expectedFormattedClass
+     * @throws \ReflectionException
      */
     #[DataProvider('cases')]
     public function testFormatReflectedClass(string|object $class, string $expectedFormattedClass): void
