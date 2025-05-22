@@ -5,71 +5,56 @@ declare(strict_types=1);
 namespace Typhoon\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversFunction;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversFunction('Typhoon\Formatter\formatClass')]
 #[CoversFunction('Typhoon\Formatter\formatReflectedClass')]
 final class FormatClassTest extends TestCase
 {
-    public function testObjectClassReturnsAsIs(): void
+    /**
+     * @return \Generator<int, array{object, non-empty-string}>
+     */
+    public static function cases(): \Generator
     {
-        $thisClass = clone $this;
-
-        self::assertSame($thisClass::class, formatClass($thisClass));
-    }
-
-    public function testStringClassReturnsAsIs(): void
-    {
-        $input = 'Foo\Bar\ClassName';
-        self::assertSame($input, formatClass($input));
-    }
-
-    public function testStringWithAnonymousPatternAppliesAnonymousPattern(): void
-    {
-        $input = "Foo\Bar@anonymous\x00/tmp/file.php(123)";
-        self::assertSame('Foo\Bar@/tmp/file.php:123', formatClass($input));
-    }
-
-    public function testStringWithoutX00DoesntAppliesAnonymousPattern(): void
-    {
-        $input = 'Foo\Bar@anonymous/tmp/file.php(123)';
-        self::assertSame($input, formatClass($input));
-    }
-
-    public function testThatAnonymousClassAppliesAnonymousPattern(): void
-    {
-        $anonymousClass = new class {};
-        $startLine = (new \ReflectionClass($anonymousClass))->getStartLine();
-
-
-        self::assertSame(
-            'class@/opt/project/tests/FormatClassTest.php:' . $startLine,
-            formatClass($anonymousClass)
-        );
+        yield [new \stdClass(), \stdClass::class];
+        yield [\stdClass::class, \stdClass::class];
+        yield [new class {}, \sprintf('class@%s:%d', __FILE__, __LINE__)];
+        yield [new class extends \ArrayObject {}, \sprintf('ArrayObject@%s:%d', __FILE__, __LINE__)];
+        yield [
+            new class implements \IteratorAggregate {
+                public function getIterator(): \Traversable
+                {
+                    return new \ArrayIterator();
+                }
+            },
+            \sprintf('IteratorAggregate@%s:%d', __FILE__, __LINE__ - 6),
+        ];
+        yield [eval('return new \stdClass();'), \stdClass::class];
+        yield [eval('return new class {};'), \sprintf('class@%s:%d', __FILE__, __LINE__)];
     }
 
     /**
-     * @throws \ReflectionException
+     * @param class-string|object $class
+     * @param non-empty-string $expectedFormattedClass
      */
-    public function testThatEvalDoesntAffectAnonymousClass(): void
+    #[DataProvider('cases')]
+    public function testFormatClass(string|object $class, string $expectedFormattedClass): void
     {
-        $evalClass = (eval('return new class() {};'));
-        $startLine = 56;
+        $formatted = formatClass($class);
 
-        self::assertSame(
-            'class@/opt/project/tests/FormatClassTest.php:' . $startLine,
-            formatClass($evalClass)
-        );
+        self::assertSame($expectedFormattedClass, $formatted);
     }
 
-    public function testThatReflectionDoesntAffectAnonymousClass(): void
+    /**
+     * @param class-string|object $class
+     * @param non-empty-string $expectedFormattedClass
+     */
+    #[DataProvider('cases')]
+    public function testFormatReflectedClass(string|object $class, string $expectedFormattedClass): void
     {
-        $anonymousClass = new class {};
-        $reflectionClass = (new \ReflectionClass($anonymousClass));
+        $formatted = formatReflectedClass(new \ReflectionClass($class));
 
-        self::assertSame(
-            'class@/opt/project/tests/FormatClassTest.php:' . $reflectionClass->getStartLine(),
-            formatClass($reflectionClass->getName())
-        );
+        self::assertSame($expectedFormattedClass, $formatted);
     }
 }
