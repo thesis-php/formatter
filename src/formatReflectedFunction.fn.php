@@ -31,13 +31,13 @@ function formatReflectedFunction(\ReflectionFunctionAbstract $function): string
     }
 
     if ($function instanceof \ReflectionMethod) {
-        return \sprintf('%s::%s()', formatClass($function->class), $function->name);
+        return \sprintf('%s::%s()', formatClass($function->class), $function->getName());
     }
 
     $class = $function->getClosureCalledClass();
 
     if ($class !== null) {
-        return \sprintf('%s::%s()', formatReflectedClass($class), $function->name);
+        return \sprintf('%s::%s()', formatReflectedClass($class), $function->getName());
     }
 
     return $function->name . '()';

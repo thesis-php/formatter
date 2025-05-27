@@ -12,5 +12,5 @@ function formatReflectedParameter(\ReflectionParameter $parameter): string
 {
     $formattedFunction = formatReflectedFunction($parameter->getDeclaringFunction());
 
-    return \sprintf('%s$%s)', substr($formattedFunction, 0, -1), $parameter->name);
+    return \sprintf('%s$%s)', substr($formattedFunction, 0, -1), $parameter->getName());
 }
