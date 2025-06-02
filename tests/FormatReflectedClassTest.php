@@ -7,18 +7,15 @@ namespace Typhoon\Formatter;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
-#[CoversFunction('Typhoon\Formatter\formatProperty')]
-#[CoversFunction('Typhoon\Formatter\formatReflectedProperty')]
-final class FormatPropertyTest extends TestCase
+#[CoversFunction('Typhoon\Formatter\formatReflectedClass')]
+final class FormatReflectedClassTest extends TestCase
 {
-    public function testFormatProperty(): void
+    public function testFormatReflectedClass(): void
     {
-        $expectedFormattedProperty = \sprintf('class@%s:%d::$x', __FILE__, __LINE__ + 2);
+        $expectedFormattedClass = formatReflectedClass(new \ReflectionClass(\ReflectionClass::class));
 
-        $formatted = formatProperty(new class {
-            public int $x = 0;
-        }, 'x');
+        $formatted = formatClass(\ReflectionClass::class);
 
-        self::assertSame($formatted, $expectedFormattedProperty);
+        self::assertSame($formatted, $expectedFormattedClass);
     }
 }
