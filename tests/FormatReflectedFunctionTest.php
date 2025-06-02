@@ -28,7 +28,7 @@ final class FormatReflectedFunctionTest extends TestCase
         yield 'from named method' => [new \ReflectionFunction('trim'), 'trim()'];
         yield 'from closure method' => [
             new \ReflectionFunction((new self('name'))->testFormatReflectedFunction(...)),
-            \sprintf('%s::testFormatReflectedFunction()', __CLASS__),
+            \sprintf('%s::testFormatReflectedFunction()', self::class),
         ];
         yield 'from eval closure method' => [
             (static function (): \ReflectionFunction {

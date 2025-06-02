@@ -15,8 +15,7 @@ final class FormatParameterTest extends TestCase
     {
         $expectedFormattedParameter = \sprintf('function@%s:%s($x)', __FILE__, __LINE__ + 2);
 
-        $formatted = formatParameter(static function (int $x): void {
-        }, 'x');
+        $formatted = formatParameter(static function (int $x): void {}, 'x');
 
         self::assertSame($expectedFormattedParameter, $formatted);
     }
