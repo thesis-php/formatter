@@ -13,10 +13,12 @@ final class FormatFunctionTest extends TestCase
 {
     /**
      * @param callable $closure
+     * @phpstan-param mixed $closure
      */
     #[DataProvider('provideFormatFunctionCases')]
     public function testFormatFunction(mixed $closure, string $expectedFormattedFunction): void
     {
+        /** @phpstan-ignore argument.type */
         $formatted = formatFunction($closure);
 
         self::assertSame($expectedFormattedFunction, $formatted);
@@ -24,9 +26,11 @@ final class FormatFunctionTest extends TestCase
 
     /**
      * @return \Generator<string, array{callable, non-empty-string}>
+     * @phpstan-ignore missingType.callable
      */
     public static function provideFormatFunctionCases(): iterable
     {
+        /** @phpstan-ignore-next-line generator.valueType */
         yield 'brackets to string with ::' => [
             \sprintf('%s::cases', self::class),
             \sprintf('%s::cases()', self::class),

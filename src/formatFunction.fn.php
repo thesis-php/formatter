@@ -8,6 +8,7 @@ namespace Typhoon\Formatter;
  * @api
  * @param callable $function native type is intentionally not used to avoid autoloading during callable type check
  * @return non-empty-string
+ * @phpstan-ignore missingType.callable
  */
 function formatFunction(mixed $function): string
 {
@@ -29,5 +30,5 @@ function formatFunction(mixed $function): string
     }
 
     /** @var object $function */
-    return \sprintf('%s()', formatClass($function));
+    return \sprintf('%s()', formatClass($function)); // @phpstan-ignore varTag.type
 }

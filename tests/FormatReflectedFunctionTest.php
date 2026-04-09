@@ -33,8 +33,8 @@ final class FormatReflectedFunctionTest extends TestCase
             self::class . '::testFormatReflectedFunction()',
         ];
         yield 'from class method' => [
-            new \ReflectionMethod(new self('name'), 'cases'),
-            self::class . '::cases()',
+            new \ReflectionMethod(self::class, 'testFormatReflectedFunction'),
+            self::class . '::testFormatReflectedFunction()',
         ];
         yield 'from named method' => [new \ReflectionFunction('trim'), 'trim()'];
         yield 'from closure method' => [

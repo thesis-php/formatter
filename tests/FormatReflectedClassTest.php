@@ -12,7 +12,9 @@ final class FormatReflectedClassTest extends TestCase
 {
     public function testFormatReflectedClass(): void
     {
-        $expectedFormattedClass = formatReflectedClass(new \ReflectionClass(\ReflectionClass::class));
+        /** @var \ReflectionClass<object> $reflectedClass */
+        $reflectedClass = new \ReflectionClass(\ReflectionClass::class);
+        $expectedFormattedClass = formatReflectedClass($reflectedClass);
 
         $formatted = formatClass(\ReflectionClass::class);
 

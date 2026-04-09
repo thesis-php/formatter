@@ -17,7 +17,7 @@ function formatReflectedFunction(\ReflectionFunctionAbstract $function): string
             return 'function()';
         }
 
-        if (preg_match('/^(.*)\((\d+)\)/', $file, $matches)) {
+        if (preg_match('/^(.*)\((\d+)\)/', $file, $matches) === 1) {
             return \sprintf('function@%s:%d()', $matches[1], $matches[2]);
         }
 
