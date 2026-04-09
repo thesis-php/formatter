@@ -27,19 +27,23 @@ final class FormatReflectedTypeTest extends TestCase
     {
         yield 'from null' => [null, ''];
         yield 'from exact type' => [
-            (new \ReflectionFunction(static fn(int $a) => null))->getParameters()[0]->getType(), // @phpstan-ignore offsetAccess.notFound
+            // @phpstan-ignore offsetAccess.notFound
+            (new \ReflectionFunction(static fn(int $a) => null))->getParameters()[0]->getType(),
             'int',
         ];
         yield 'from nullable type' => [
-            (new \ReflectionFunction(static fn(?int $a) => null))->getParameters()[0]->getType(), // @phpstan-ignore offsetAccess.notFound
+            // @phpstan-ignore offsetAccess.notFound
+            (new \ReflectionFunction(static fn(?int $a) => null))->getParameters()[0]->getType(),
             '?int',
         ];
         yield 'from union type' => [
-            (new \ReflectionFunction(static fn(string|int $a) => null))->getParameters()[0]->getType(), // @phpstan-ignore offsetAccess.notFound
+            // @phpstan-ignore offsetAccess.notFound
+            (new \ReflectionFunction(static fn(string|int $a) => null))->getParameters()[0]->getType(),
             'string|int',
         ];
         yield 'from intersection type' => [
-            (new \ReflectionFunction(static fn(\IteratorAggregate&\Iterator $a) => null))->getParameters()[0]->getType(), // @phpstan-ignore offsetAccess.notFound
+            // @phpstan-ignore offsetAccess.notFound
+            (new \ReflectionFunction(static fn(\IteratorAggregate&\Iterator $a) => null))->getParameters()[0]->getType(),
             'IteratorAggregate&Iterator',
         ];
     }

@@ -6,7 +6,7 @@ namespace Typhoon\Formatter;
 
 /**
  * @api
- * @param callable $function native type is intentionally not used to avoid autoloading during callable type check
+ * @param callable $function no native type to avoid autoloading on callable type check
  * @return non-empty-string
  * @phpstan-ignore missingType.callable
  */

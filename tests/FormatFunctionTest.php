@@ -12,14 +12,12 @@ use PHPUnit\Framework\TestCase;
 final class FormatFunctionTest extends TestCase
 {
     /**
-     * @param callable $closure
-     * @phpstan-param mixed $closure
+     * @phpstan-ignore missingType.callable
      */
     #[DataProvider('provideFormatFunctionCases')]
-    public function testFormatFunction(mixed $closure, string $expectedFormattedFunction): void
+    public function testFormatFunction(callable $function, string $expectedFormattedFunction): void
     {
-        /** @phpstan-ignore argument.type */
-        $formatted = formatFunction($closure);
+        $formatted = formatFunction($function);
 
         self::assertSame($expectedFormattedFunction, $formatted);
     }
@@ -30,10 +28,9 @@ final class FormatFunctionTest extends TestCase
      */
     public static function provideFormatFunctionCases(): iterable
     {
-        /** @phpstan-ignore-next-line generator.valueType */
         yield 'brackets to string with ::' => [
-            \sprintf('%s::cases', self::class),
-            \sprintf('%s::cases()', self::class),
+            \sprintf('%s::provideFormatFunctionCases', self::class),
+            \sprintf('%s::provideFormatFunctionCases()', self::class),
         ];
         yield 'brackets to string' => [
             'strlen',
