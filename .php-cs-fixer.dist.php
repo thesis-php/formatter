@@ -20,7 +20,7 @@ $config = (new Config())
     ->setCacheFile(__DIR__ . '/var/' . basename(__FILE__) . '.cache');
 
 (new PhpCsFixerCodingStandard())->applyTo($config, [
-    'new_expression_parentheses' => false,
+    // 'rule' => ['overridden' => 'config'],
 ]);
 
 return $config;
