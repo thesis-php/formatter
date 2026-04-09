@@ -22,16 +22,16 @@
     },
     "autoload": {
         "files": [
-            "src/format.fn.php",
-            "src/formatClass.fn.php",
-            "src/formatFunction.fn.php",
-            "src/formatParameter.fn.php",
-            "src/formatProperty.fn.php",
-            "src/formatReflectedClass.fn.php",
-            "src/formatReflectedFunction.fn.php",
-            "src/formatReflectedParameter.fn.php",
-            "src/formatReflectedProperty.fn.php",
-            "src/formatReflectedType.fn.php"
+            "src/format.php",
+            "src/formatClass.php",
+            "src/formatFunction.php",
+            "src/formatParameter.php",
+            "src/formatProperty.php",
+            "src/formatReflectedClass.php",
+            "src/formatReflectedFunction.php",
+            "src/formatReflectedParameter.php",
+            "src/formatReflectedProperty.php",
+            "src/formatReflectedType.php"
         ]
     },
     "autoload-dev": {
