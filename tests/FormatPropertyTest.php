@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Thesis\Formatter;
@@ -20,6 +19,6 @@ final class FormatPropertyTest extends TestCase
             public int $x = 0;
         }, 'x');
 
-        self::assertSame($formatted, $expectedFormattedProperty);
+        self::assertSame($expectedFormattedProperty, $formatted);
     }
 }

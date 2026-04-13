@@ -34,8 +34,8 @@ final class FormatTest extends TestCase
     public static function provideFormatCases(): iterable
     {
         yield 'from null'  => [null, 'null'];
-        yield 'from false' => [true, 'true'];
-        yield 'from true'  => [false, 'false'];
+        yield 'from true'  => [true, 'true'];
+        yield 'from false' => [false, 'false'];
         yield 'from int'  => [127, '127'];
         yield 'from float'  => [1.27, '1.27'];
         yield 'from string'  => ['formatter', "'formatter'"];

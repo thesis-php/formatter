@@ -17,6 +17,6 @@ final class FormatReflectedClassTest extends TestCase
 
         $formatted = formatClass(\ReflectionClass::class);
 
-        self::assertSame($formatted, $expectedFormattedClass);
+        self::assertSame($expectedFormattedClass, $formatted);
     }
 }
