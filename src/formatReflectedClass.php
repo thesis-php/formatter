@@ -6,7 +6,7 @@ namespace Thesis\Formatter;
 
 /**
  * @api
- * @param \ReflectionClass<object> $class
+ * @param \ReflectionClass<*> $class
  * @return non-empty-string
  */
 function formatReflectedClass(\ReflectionClass $class): string
