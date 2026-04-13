@@ -3,13 +3,13 @@
 
 declare(strict_types=1);
 
-namespace Typhoon\Formatter;
+namespace Thesis\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
-#[CoversFunction('Typhoon\Formatter\formatProperty')]
-#[CoversFunction('Typhoon\Formatter\formatReflectedProperty')]
+#[CoversFunction('Thesis\Formatter\formatProperty')]
+#[CoversFunction('Thesis\Formatter\formatReflectedProperty')]
 final class FormatPropertyTest extends TestCase
 {
     public function testFormatProperty(): void

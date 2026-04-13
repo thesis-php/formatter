@@ -1,9 +1,9 @@
-# Typhoon Formatter
+# Thesis Formatter
 
-[![PHP Version Requirement](https://img.shields.io/packagist/dependency-v/typhoon/formatter/php)](https://packagist.org/packages/typhoon/formatter)
-[![GitHub Release](https://img.shields.io/github/v/release/typhoon-php/formatter)](https://github.com/typhoon-php/formatter/releases)
-[![Code Coverage](https://codecov.io/gh/typhoon-php/formatter/branch/0.1.x/graph/badge.svg)](https://codecov.io/gh/typhoon-php/formatter/tree/0.1.x)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Ftyphoon-php%2Fformatter%2F0.1.x)](https://dashboard.stryker-mutator.io/reports/github.com/typhoon-php/formatter/0.1.x)
+[![PHP Version Requirement](https://img.shields.io/packagist/dependency-v/thesis/formatter/php)](https://packagist.org/packages/thesis/formatter)
+[![GitHub Release](https://img.shields.io/github/v/release/thesis-php/formatter)](https://github.com/thesis-php/formatter/releases)
+[![Code Coverage](https://codecov.io/gh/thesis-php/formatter/branch/0.1.x/graph/badge.svg)](https://codecov.io/gh/thesis-php/formatter/tree/0.1.x)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fthesis-php%2Fformatter%2F0.1.x)](https://dashboard.stryker-mutator.io/reports/github.com/thesis-php/formatter/0.1.x)
 
 A collection of functions for formatting PHP values and code elements into human-readable strings.
 Useful for error messages, exceptions, and debugging output.
@@ -11,12 +11,12 @@ Useful for error messages, exceptions, and debugging output.
 ## Installation
 
 ```shell
-composer require typhoon/formatter
+composer require thesis/formatter
 ```
 
 ## Functions
 
-All functions are in the `Typhoon\Formatter` namespace.
+All functions are in the `Thesis\Formatter` namespace.
 
 ### `format(mixed $value): string`
 

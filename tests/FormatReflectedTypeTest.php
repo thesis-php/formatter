@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Typhoon\Formatter;
+namespace Thesis\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-#[CoversFunction('Typhoon\Formatter\formatReflectedType')]
+#[CoversFunction('Thesis\Formatter\formatReflectedType')]
 final class FormatReflectedTypeTest extends TestCase
 {
     #[DataProvider('provideFormatReflectedTypeCases')]

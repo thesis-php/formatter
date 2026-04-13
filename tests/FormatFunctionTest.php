@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Typhoon\Formatter;
+namespace Thesis\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-#[CoversFunction('Typhoon\Formatter\formatFunction')]
+#[CoversFunction('Thesis\Formatter\formatFunction')]
 final class FormatFunctionTest extends TestCase
 {
     /**

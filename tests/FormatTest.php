@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Typhoon\Formatter;
+namespace Thesis\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -13,7 +13,7 @@ enum Color
     case RED;
 }
 
-#[CoversFunction('Typhoon\Formatter\format')]
+#[CoversFunction('Thesis\Formatter\format')]
 final class FormatTest extends TestCase
 {
     #[DataProvider('provideFormatCases')]
@@ -50,7 +50,7 @@ final class FormatTest extends TestCase
 
             return $object;
         })(), 'object{x: 10, y: 20}'];
-        yield 'from enum'  => [Color::RED, 'Typhoon\Formatter\Color::RED'];
+        yield 'from enum'  => [Color::RED, 'Thesis\Formatter\Color::RED'];
         yield 'from closure'  => [static function (): void {}, \sprintf('function@%s:%d()', __FILE__, __LINE__)];
         yield 'from object'  => [new class {}, \sprintf('class@%s:%d', __FILE__, __LINE__)];
         yield 'from resource'  => [fopen('php://memory', 'r'), 'resource'];

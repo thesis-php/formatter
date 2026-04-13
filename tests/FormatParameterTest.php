@@ -3,12 +3,12 @@
 
 declare(strict_types=1);
 
-namespace Typhoon\Formatter;
+namespace Thesis\Formatter;
 
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\TestCase;
 
-#[CoversFunction('Typhoon\Formatter\formatParameter')]
+#[CoversFunction('Thesis\Formatter\formatParameter')]
 final class FormatParameterTest extends TestCase
 {
     public function testFormatParameter(): void

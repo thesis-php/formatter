@@ -1,6 +1,6 @@
 {
-    "name": "typhoon/formatter",
-    "description": "Typhoon Formatter",
+    "name": "thesis/formatter",
+    "description": "Thesis Formatter",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -9,8 +9,8 @@
             "email": "udaltsov.valentin@gmail.com"
         },
         {
-            "name": "Typhoon Team",
-            "homepage": "https://github.com/orgs/typhoon-php/people"
+            "name": "Thesis Team",
+            "homepage": "https://github.com/orgs/thesis-php/people"
         }
     ],
     "require": {
@@ -36,7 +36,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Typhoon\\Formatter\\": "tests/"
+            "Thesis\\Formatter\\": "tests/"
         }
     },
     "config": {
